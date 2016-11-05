@@ -1,0 +1,32 @@
+﻿@model Vidloq.ViewModels.QualquerFilmeViewModel
+
+@{
+    ViewBag.Title = "Filme Aleatório";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    // se o filme foi locado por mais de 5 cliente (> 5) então é popular (? "popular") : senão (não faça nada)
+    var popular = Model.Clientes.Count > 2 ? "popular" : null;
+}
+
+<style>
+    .popular {color: red;}
+</style>
+
+<h2 class="@popular">@Model.Filme.Titulo</h2>
+
+@if (Model.Clientes.Count == 0)
+
+{
+    <p>Este filme nunca foi locado.</p>
+}
+else
+{
+    <ul>
+        @foreach (var cliente in Model.Clientes)
+        {
+            <li>@cliente.Nome</li>
+        }
+    </ul>
+}
