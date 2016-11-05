@@ -6,9 +6,9 @@ using Vidloq.Models;
 
 namespace Vidloq.ViewModels
 {
-    public class QualquerFilmeViewModel
+    public class QualquerProdutoViewModel
     {
-        public Filme Filme { get; set; }
+        public Produto Produto { get; set; }
         public List<Cliente> Clientes { get; set; }
     }
 }

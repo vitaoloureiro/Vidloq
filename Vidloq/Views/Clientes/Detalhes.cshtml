@@ -5,3 +5,10 @@
 }
 
 <h2>@Model.Nome</h2>
+<ul>
+    <li>Plano: @Model.Plano.Titulo</li>
+        @if (Model.DataNascimento.HasValue)
+        {
+        <li>Data de Nascimento: @Model.DataNascimento.Value.ToShortDateString()</li>
+        }
+</ul>

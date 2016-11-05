@@ -8,31 +8,32 @@ using Vidloq.ViewModels;
 
 namespace Vidloq.Controllers
 {
-    public class FilmesController : Controller
+    public class ProdutosController : Controller
     {
 
 
         public ViewResult Index()
         {
-            var filmes = GetFilmes();
+            var produtos = GetProdutos();
 
-            return View(filmes);
+            return View(produtos);
         }
 
 
-        private IEnumerable<Filme> GetFilmes()
+        private IEnumerable<Produto> GetProdutos()
         {
-            return new List<Filme>
+            return new List<Produto>
             {
-                new Filme { Filme_Id = 1, Titulo = "Shrek" },
-                new Filme { Filme_Id = 2, Titulo = "Wall-e" }
+                new Produto { ProdutoId = 1, Titulo = "Gears of War 4" },
+                new Produto { ProdutoId = 2, Titulo = "Forza Motorsports 6" },
+                new Produto { ProdutoId = 3, Titulo = "Destiny" }
             };
         }
 
-        // GET: Filmes/QualquerUm
+        // GET: Produtos/QualquerUm
         public ActionResult QualquerUm()
         {
-            var filme = new Filme() {Titulo = "Avengers 3"};
+            var produto = new Produto() {Titulo = "Avengers 3"};
             var clientes = new List<Cliente>
             {
                 new Cliente {Nome = "Victor Augusto"},
@@ -41,9 +42,9 @@ namespace Vidloq.Controllers
             };
 
 
-        var viewModel = new QualquerFilmeViewModel
+        var viewModel = new QualquerProdutoViewModel
             {
-                Filme = filme,
+                Produto = produto,
                 Clientes = clientes
             };
 

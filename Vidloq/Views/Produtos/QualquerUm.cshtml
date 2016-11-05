@@ -1,7 +1,7 @@
-﻿@model Vidloq.ViewModels.QualquerFilmeViewModel
+﻿@model Vidloq.ViewModels.QualquerProdutoViewModel
 
 @{
-    ViewBag.Title = "Filme Aleatório";
+    ViewBag.Title = "Produto Aleatório";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,12 +14,12 @@
     .popular {color: red;}
 </style>
 
-<h2 class="@popular">@Model.Filme.Titulo</h2>
+<h2 class="@popular">@Model.Produto.Titulo</h2>
 
 @if (Model.Clientes.Count == 0)
 
 {
-    <p>Este filme nunca foi locado.</p>
+    <p>Este produto nunca foi locado.</p>
 }
 else
 {
