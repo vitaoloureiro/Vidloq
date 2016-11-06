@@ -30,6 +30,7 @@ namespace Vidloq.Models
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Plano> Planos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -53,6 +54,7 @@ namespace Vidloq.Models
             modelBuilder.Configurations.Add(new ClienteConfig());
             modelBuilder.Configurations.Add(new ProdutoConfig());
             modelBuilder.Configurations.Add(new PlanoConfig());
+            modelBuilder.Configurations.Add(new CategoriaConfig());
 
             base.OnModelCreating(modelBuilder);
 

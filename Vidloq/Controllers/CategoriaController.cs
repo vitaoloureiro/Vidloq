@@ -8,12 +8,12 @@ using Vidloq.Models;
 
 namespace Vidloq.Controllers
 {
-    public class ProdutosController : Controller
+    public class CategoriasController : Controller
     {
         // Setando a conexão
         private ApplicationDbContext _context;
 
-        public ProdutosController()
+        public CategoriasController()
         {
             _context = new ApplicationDbContext();
         }
@@ -27,25 +27,9 @@ namespace Vidloq.Controllers
         public ViewResult Index()
 
         {
-            var produtos = _context.Produtos.Include(p => p.Categoria).ToList();
-
-            return View(produtos);
+            var categorias = _context.Categorias.ToList(); 
+            return View(categorias);
         }
-
-        public ActionResult Detalhes(int id)
-        {
-            var produto = _context.Produtos
-                .Include(p => p.Categoria)
-                .SingleOrDefault(p => p.ProdutoId == id);
-
-            if (produto == null)
-                return HttpNotFound();
-
-            return View(produto);
-        }
-
-
-
 
     }
 }

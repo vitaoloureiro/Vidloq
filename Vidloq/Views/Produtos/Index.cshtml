@@ -1,22 +1,28 @@
-﻿@model IEnumerable<Vidloq.Models.Filme>
+﻿@model IEnumerable<Vidloq.Models.Produto>
 
 @{
-    ViewBag.Title = "Movies";
+    ViewBag.Title = "Jogos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Filmes</h2>
+<h2>Jogos</h2>
+
+@Html.ActionLink("Novo", "Adicionar", "Produtos", null, new { @class = "btn btn-success"})
+
+
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Filme</th>
+        <tr class="active">
+            <th>Jogo</th>
+            <th>Categoria</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var filme in Model)
+        @foreach (var produto in Model)
         {
             <tr>
-                <td>@filme.Titulo</td>
+                <td>@Html.ActionLink(produto.Titulo, "Detalhes", "Produtos", new { id = produto.ProdutoId }, null)</td>
+                <td>@produto.Categoria.Titulo</td>
             </tr>
         }
     </tbody>

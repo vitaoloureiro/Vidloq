@@ -7,8 +7,10 @@
 <h2>@Model.Nome</h2>
 <ul>
     <li>Plano: @Model.Plano.Titulo</li>
-        @if (Model.DataNascimento.HasValue)
-        {
+    @if (Model.DataNascimento.HasValue)
+    {
         <li>Data de Nascimento: @Model.DataNascimento.Value.ToShortDateString()</li>
-        }
+    }
 </ul>
+
+@Html.ActionLink("Editar", "Editar", "Clientes", new {id = Model.ClienteId}, new { @class = "btn btn-info"})

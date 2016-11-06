@@ -168,30 +168,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="EntityConfig\CategoriaConfig.cs" />
     <Compile Include="EntityConfig\ClienteConfig.cs" />
     <Compile Include="EntityConfig\PlanoConfig.cs" />
     <Compile Include="EntityConfig\ProdutoConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611051844474_PopularPlanos.cs" />
-    <Compile Include="Migrations\201611051844474_PopularPlanos.Designer.cs">
-      <DependentUpon>201611051844474_PopularPlanos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611051954366_AddTituloAPlanos.cs" />
-    <Compile Include="Migrations\201611051954366_AddTituloAPlanos.Designer.cs">
-      <DependentUpon>201611051954366_AddTituloAPlanos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611052006184_AddDataDeNascimento.cs" />
-    <Compile Include="Migrations\201611052006184_AddDataDeNascimento.Designer.cs">
-      <DependentUpon>201611052006184_AddDataDeNascimento.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Plano.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -199,6 +190,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ClienteFormViewModel.cs" />
     <Compile Include="ViewModels\QualquerProdutoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +254,9 @@
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Detalhes.cshtml" />
     <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Produtos\Detalhes.cshtml" />
+    <Content Include="Views\Clientes\ClienteForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,17 +268,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611051844474_PopularPlanos.resx">
-      <DependentUpon>201611051844474_PopularPlanos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611051954366_AddTituloAPlanos.resx">
-      <DependentUpon>201611051954366_AddTituloAPlanos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611052006184_AddDataDeNascimento.resx">
-      <DependentUpon>201611052006184_AddDataDeNascimento.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

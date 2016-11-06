@@ -14,6 +14,12 @@ namespace Vidloq.EntityConfig
                 .IsRequired()
                 .HasMaxLength(255);
 
+            Property(p => p.CategoriaId)
+                .IsRequired();
+
+            Property(p => p.QtDisponivel)
+                .IsRequired();
+
             ToTable("Produtos");
 
         }

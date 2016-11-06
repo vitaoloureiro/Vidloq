@@ -4,28 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Clientes</h2>
+
+@Html.ActionLink("Cadastrar", "Adicionar", "Clientes", null, new { @class = "btn btn-success"})
+
 @if (!Model.Any())
 {
     <p>Nenhum cliente cadastrado.</p>
 }
 else
 {
-
-}
     <table class="table table-bordered table-hover">
         <thead>
-            <tr class="active">
-                <th>Cliente</th>
-                <th>Plano</th>
-            </tr>
+        <tr class="active">
+            <th>Cliente</th>
+            <th>Plano</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var cliente in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(cliente.Nome, "Detalhes", "Clientes", new { id = cliente.ClienteId }, null)</td>
-                    <td>@cliente.Plano.Titulo</td>
-                </tr>
-            }
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(cliente.Nome, "Detalhes", "Clientes", new { id = cliente.ClienteId }, null)</td>
+                <td>@cliente.Plano.Titulo</td>
+            </tr>
+        }
         </tbody>
     </table>
+
+}

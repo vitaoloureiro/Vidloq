@@ -1,0 +1,16 @@
+﻿@model Vidloq.Models.Produto
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Titulo</h2>
+<ul>
+    <li>Categoria: @Model.Categoria.Titulo</li>
+    @if (Model.DataLancamento.HasValue)
+    {
+    <li>Data de Lançamento: @Model.DataLancamento.Value.ToShortDateString()</li>
+    }
+    <li>Em estoque: @Model.QtDisponivel</li>
+
+</ul>

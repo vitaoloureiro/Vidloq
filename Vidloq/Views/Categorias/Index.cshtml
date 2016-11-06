@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Vidloq.Models.Categoria>
+    @{
+    ViewBag.Title = "Categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Categorias</h2>
+@if (!Model.Any())
+{
+    <p>Nenhuma categoria cadastrado.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="active">
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoria in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(categoria.Titulo, "Listar", "Categorias", new { id = categoria.CatId }, null)</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+ }

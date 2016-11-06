@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidloq.Models;
+using Vidloq.ViewModels;
 
 namespace Vidloq.Controllers
 {
     public class ClientesController : Controller
     {
-
         // Setando a conexão
         private ApplicationDbContext _context;
 
@@ -51,16 +51,59 @@ namespace Vidloq.Controllers
             return View(cliente);
         }
 
-
-/*
-        private IEnumerable<Cliente> GetClientes()
+        public ActionResult Adicionar()
         {
-            return new List<Cliente>
+            //Fazendo uma consulta para pegar a lista de planos
+            var planos = _context.Planos.ToList();
+            //Como vão ser necessários vários dados do plano é melhor fazer uma ViewModel
+            //Lembrar de alterar o @model da View @model Vidloq.ViewModels.AdicionarClienteViewModel
+            var viewModel = new ClienteFormViewModel
             {
-                new Cliente { ClienteId = 1, Nome = "Victor Augusto" },
-                new Cliente { ClienteId = 2, Nome = "Cauã Victor" }
+                //objeto da view = var planos
+                Planos = planos
             };
-*/
-       
+            return View("ClienteForm", viewModel);
         }
+
+        [HttpPost]
+        //Model Binding
+        public ActionResult Salvar(Cliente cliente)
+        {
+            // Se Cliente for vazio cadastrar, senão atualizar
+            if (cliente.ClienteId == 0)
+                _context.Clientes.Add(cliente);
+            else
+            {
+                var atualizar = _context.Clientes.Single(c => c.ClienteId == cliente.ClienteId);
+
+                // Aqui poderia ser instalar o automapper, para não precisar especificar cada campo
+                // Mapper.Map(cliente, atualizar)
+                atualizar.Nome = cliente.Nome;
+                atualizar.DataNascimento = cliente.DataNascimento;
+                atualizar.PlanoId = cliente.PlanoId;
+                atualizar.Newsletter = cliente.Newsletter;
+
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Clientes");
+        }
+
+        public ActionResult Editar(int id)
+        {
+            var cliente = _context.Clientes.SingleOrDefault(c => c.ClienteId == id);
+
+            if (cliente == null)
+                return HttpNotFound();
+
+            var viewModel = new ClienteFormViewModel
+            {
+                Cliente = cliente,
+                Planos = _context.Planos.ToList()
+            };
+
+            return View("ClienteForm", viewModel);
+
+        }
+    }
     }
