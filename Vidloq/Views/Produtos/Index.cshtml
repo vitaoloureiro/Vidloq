@@ -9,21 +9,22 @@
 
 @Html.ActionLink("Novo", "Adicionar", "Produtos", null, new { @class = "btn btn-success"})
 
-
+<div class="mainbody">
 <table class="table table-bordered table-hover">
     <thead>
-        <tr class="active">
-            <th>Jogo</th>
-            <th>Categoria</th>
-        </tr>
+    <tr class="active">
+        <th>Jogo</th>
+        <th>Categoria</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var produto in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(produto.Titulo, "Detalhes", "Produtos", new { id = produto.ProdutoId }, null)</td>
-                <td>@produto.Categoria.Titulo</td>
-            </tr>
-        }
+    @foreach (var produto in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(produto.Titulo, "Detalhes", "Produtos", new { id = produto.ProdutoId }, null)</td>
+            <td>@produto.Categoria.Titulo</td>
+        </tr>
+    }
     </tbody>
 </table>
+</div>

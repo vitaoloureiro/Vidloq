@@ -1,34 +1,47 @@
 ﻿@model Vidloq.ViewModels.ClienteFormViewModel
 @{
-    ViewBag.Title = "Dados do Cliente";
+    ViewBag.Title = Model.Acao;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Dados do Cliente</h2>
+<h2>@Model.Acao Cliente</h2>
+
+@Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
 @using (@Html.BeginForm("Salvar", "Clientes"))
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.Cliente.Nome)
-        @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control"})
-    </div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Cliente.Nome)
+    @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control"})
+    @Html.ValidationMessageFor(m => m.Cliente.Nome, "", new {@class = "text-danger"})
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Cliente.DataNascimento)
-        @Html.TextBoxFor(m => m.Cliente.DataNascimento, "{0:dd/MM/yyyy}", new { @class = "form-control"})
-    </div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Cliente.DataNascimento)
+    @Html.TextBoxFor(m => m.Cliente.DataNascimento, "{0:dd/MM/yyyy}", new { @class = "form-control"})
+    @Html.ValidationMessageFor(m => m.Cliente.DataNascimento, "", new {@class = "text-danger"})
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Cliente.PlanoId)
-        @Html.DropDownListFor(m => m.Cliente.PlanoId, new SelectList(Model.Planos, "PlanoId", "Titulo"), "Selecione um plano", new { @class = "form-control"})
-    </div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Cliente.PlanoId)
+    @Html.DropDownListFor(m => m.Cliente.PlanoId, new SelectList(Model.Planos, "PlanoId", "Titulo"), "Selecione um plano", new { @class = "form-control"})
+    @Html.ValidationMessageFor(m => m.Cliente.PlanoId, "", new {@class = "text-danger"})
+</div>
 
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Cliente.Newsletter) Receber Notificações por email
-        </label>
-    </div>
+<div class="checkbox">
+    <label>
+        @Html.CheckBoxFor(m => m.Cliente.Newsletter) Receber Notificações por email
+    </label>
+</div>
+    
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Cliente.ClienteId)
+
     <button type="submit" class="btn btn-primary">Salvar</button>
 
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

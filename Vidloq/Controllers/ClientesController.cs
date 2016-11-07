@@ -59,16 +59,34 @@ namespace Vidloq.Controllers
             //Lembrar de alterar o @model da View @model Vidloq.ViewModels.AdicionarClienteViewModel
             var viewModel = new ClienteFormViewModel
             {
-                //objeto da view = var planos
+
+                //objeto da model = var planos
                 Planos = planos
             };
             return View("ClienteForm", viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         //Model Binding
         public ActionResult Salvar(Cliente cliente)
         {
+            
+            // Validação, se o objeto não estiver consistente retornar para a view do Form
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ClienteFormViewModel
+                {
+                    Cliente = cliente,
+                    Planos = _context.Planos.ToList()
+                };
+
+                return View("ClienteForm", viewModel);
+            }
+
+
+
+
             // Se Cliente for vazio cadastrar, senão atualizar
             if (cliente.ClienteId == 0)
                 _context.Clientes.Add(cliente);

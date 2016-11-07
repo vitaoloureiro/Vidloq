@@ -14,5 +14,8 @@ namespace Vidloq.Models
         public short TaxaDeInscricao { get; set; }
         public byte DuracaoEmMeses { get; set; }
         public byte TaxaDeDesconto { get; set; }
+
+        public static readonly byte Desconhecido = 0;
+        public static readonly byte APagar = 1;
     }
 }

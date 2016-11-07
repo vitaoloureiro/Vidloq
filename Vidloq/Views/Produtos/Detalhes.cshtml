@@ -7,10 +7,8 @@
 <h2>@Model.Titulo</h2>
 <ul>
     <li>Categoria: @Model.Categoria.Titulo</li>
-    @if (Model.DataLancamento.HasValue)
-    {
-    <li>Data de Lançamento: @Model.DataLancamento.Value.ToShortDateString()</li>
-    }
+    <li>Data de Lançamento: @Model.DataLancamento.ToShortDateString()</li>
+    <li>Data de Cadastro: @Model.DataCadastro.ToShortDateString()</li>
     <li>Em estoque: @Model.QtDisponivel</li>
-
 </ul>
+@Html.ActionLink("Editar", "Editar", "Produtos", new {id = Model.ProdutoId}, new { @class = "btn btn-info"})

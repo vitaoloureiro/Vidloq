@@ -7,6 +7,8 @@
 
 @Html.ActionLink("Cadastrar", "Adicionar", "Clientes", null, new { @class = "btn btn-success"})
 
+<div class="mainbody">
+
 @if (!Model.Any())
 {
     <p>Nenhum cliente cadastrado.</p>
@@ -32,3 +34,4 @@ else
     </table>
 
 }
+</div>

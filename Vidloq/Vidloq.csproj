@@ -180,6 +180,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611062242265_ProdutosNadaNulo.cs" />
+    <Compile Include="Migrations\201611062242265_ProdutosNadaNulo.Designer.cs">
+      <DependentUpon>201611062242265_ProdutosNadaNulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611070057042_ClienteValidacao.cs" />
+    <Compile Include="Migrations\201611070057042_ClienteValidacao.Designer.cs">
+      <DependentUpon>201611070057042_ClienteValidacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -188,9 +196,11 @@
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Validacoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ClienteFormViewModel.cs" />
+    <Compile Include="ViewModels\ProdutoFormViewModel.cs" />
     <Compile Include="ViewModels\QualquerProdutoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +267,7 @@
     <Content Include="Views\Categorias\Index.cshtml" />
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Clientes\ClienteForm.cshtml" />
+    <Content Include="Views\Produtos\ProdutoForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +279,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611062242265_ProdutosNadaNulo.resx">
+      <DependentUpon>201611062242265_ProdutosNadaNulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070057042_ClienteValidacao.resx">
+      <DependentUpon>201611070057042_ClienteValidacao.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
